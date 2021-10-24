@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package usa.ciclo3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -19,9 +15,15 @@ public class Farm implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String address;
+    private Integer exension;
+//    private Integer category_id;
     private String name;
-    private Integer price;
-    private String description;
+    
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
+    @JsonIgnoreProperties("farms")
+    private Categoria categoria;
 
     public Integer getId() {
         return id;
@@ -29,6 +31,22 @@ public class Farm implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getExension() {
+        return exension;
+    }
+
+    public void setExension(Integer exension) {
+        this.exension = exension;
     }
 
     public String getName() {
@@ -39,21 +57,13 @@ public class Farm implements Serializable{
         this.name = name;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
     
 }

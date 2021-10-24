@@ -25,8 +25,8 @@ public class FarmRepository {
         return farmCrudRepository.findById(id);
     }
     
-    public Farm save(Farm p){
-        return farmCrudRepository.save(p);
+    public Farm save(Farm f){
+        return farmCrudRepository.save(f);
     }
            
 }
